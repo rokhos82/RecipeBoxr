@@ -4,7 +4,7 @@
 	<link rel="stylesheet" type="text/csss" href="main.css" />
 </head>
 <body>
-	<div class="nav">Nav Bar</div>
+	<div class="nav">Home</div>
 	<div class="container">
 		<div class="tools">
 			<a href="pantry.php">Pantries</a>

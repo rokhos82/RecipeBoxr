@@ -38,3 +38,9 @@ div.foot {
 	width: 100%;
 	border: 1px solid #000000;
 }
+
+a.inline {
+	display: inline;
+	margin-left: 10px;
+	margin-right: 10px;
+}
