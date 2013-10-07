@@ -1,0 +1,38 @@
+body {
+	padding: 10px;
+	margin: 0;
+}
+
+div {
+	maring: 0;
+	padding: 0;
+}
+
+div.container {
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+div.nav {
+	display: block;
+	width: 100%;
+	border: 1px solid #000000;
+}
+
+div.tools {
+	display: inline;
+	width: 200px;
+	border: 1px solid #000000;
+}
+
+div.main {
+	display: inline;
+	border: 1px solid #000000;
+}
+
+div.foot {
+	display: block;
+	width: 100%;
+	border: 1px solid #000000;
+}
