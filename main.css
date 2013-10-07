@@ -10,12 +10,14 @@ div {
 
 div.container {
 	margin: 0;
+	margin-bottom: 10px;
 	padding: 0;
 	display: block;
 }
 
 div.nav {
 	display: block;
+	margin-bottom: 10px;
 	width: 100%;
 	border: 1px solid #000000;
 }
