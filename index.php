@@ -7,11 +7,11 @@
 	<div class="nav">Home</div>
 	<div class="container">
 		<div class="tools">
-			<a href="pantry.php">Pantries</a>
+			<a>Add Pantry</a>
+			<a>Users</a>
 		</div>
 		<div class="main">
-			<?php
-			?>
+			<a href="pantry.php">The one and only pantry</a>
 		</div>
 	</div>
 	<div class="foot">Footer - may not be used</div>
