@@ -7,11 +7,15 @@
 	<div class="nav">Home</div>
 	<div class="container">
 		<div class="tools">
-			<a href="pantry.php">Pantries</a>
+			<a>Add Pantry</a>
+			<a>Users</a>
 		</div>
 		<div class="main">
-			<?php
-			?>
+			<ul>
+				<li><a href="pantry.php">Pantry</a></li>
+				<li>List</li>
+				<li>Here</li>
+			</ul>
 		</div>
 	</div>
 	<div class="foot">Footer - may not be used</div>
