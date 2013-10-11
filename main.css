@@ -23,13 +23,15 @@ div.nav {
 }
 
 div.tools {
-	display: inline;
-	width: 200px;
+	vertical-align: top;
+	display: inline-block;
+	width: 100px;
 	border: 1px solid #000000;
 }
 
 div.main {
-	display: inline;
+	vertical-align: top;
+	display: inline-block;
 	border: 1px solid #000000;
 }
 
@@ -43,4 +45,9 @@ a.inline {
 	display: inline;
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+a.block {
+	display: block;
+	margin: 5px;
 }

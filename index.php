@@ -7,8 +7,8 @@
 	<div class="nav">Home</div>
 	<div class="container">
 		<div class="tools">
-			<a>Add Pantry</a>
-			<a>Users</a>
+			<a class="block">Add Pantry</a>
+			<a class="block">Users</a>
 		</div>
 		<div class="main">
 			<ul>
@@ -16,6 +16,14 @@
 				<li>List</li>
 				<li>Here</li>
 			</ul>
+<?php
+require("config.php");
+$conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
+
+if(mysqli_connect_errno($conn)) {
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
+?>
 		</div>
 	</div>
 	<div class="foot">Footer - may not be used</div>
