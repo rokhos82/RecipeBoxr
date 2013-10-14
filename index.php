@@ -12,10 +12,7 @@
 		</div>
 		<div class="main">
 			<ul>
-				<li><a href="pantry.php">Pantry</a></li>
-				<li>List</li>
-				<li>Here</li>
-			</ul>
+
 <?php
 require("config.php");
 $conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
@@ -25,7 +22,19 @@ if(mysqli_connect_errno($conn)) {
 }
 
 $query = "SELECT * FROM pantry;";
+
+if($result = mysqli_query($conn,$query)) {
+	while($row = mysqli_fetch_array($result)) {
+		echo("<li><a href=\"pantry.php?id=" . $row['pantry_id'] . "\">" . $row['name'] . "</a></li>");
+	}
+}
+else {
+	echo(mysqli_error($conn));
+}
+
+mysqli_close($conn);
 ?>
+			</ul>
 		</div>
 	</div>
 	<div class="foot">Footer - may not be used</div>
