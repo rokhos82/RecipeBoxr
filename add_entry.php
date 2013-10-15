@@ -11,6 +11,6 @@
 		</div>
 		<div class="main">Main Body</div>
 	</div>
-	<div class="foot">Footer - may not be used</div>
+	<div class="foot">(C) 2013 Justin Lane</div>
 </body>
 </html>

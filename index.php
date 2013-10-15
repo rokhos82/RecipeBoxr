@@ -7,8 +7,9 @@
 	<div class="nav">Home</div>
 	<div class="container">
 		<div class="tools">
-			<a class="block">Add Pantry</a>
+			<a class="block" href="add_pantry.php">Add Pantry</a>
 			<a class="block">Users</a>
+			<a class="block" href="setup.php">Setup</a>
 		</div>
 		<div class="main">
 			<ul>
@@ -37,6 +38,6 @@ mysqli_close($conn);
 			</ul>
 		</div>
 	</div>
-	<div class="foot">Footer - may not be used</div>
+	<div class="foot">(C) 2013 Justin Lane</div>
 </body>
 </html>
