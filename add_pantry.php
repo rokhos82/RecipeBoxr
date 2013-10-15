@@ -13,6 +13,7 @@
 		<div class="main">
 			<form action="actions/new_pantry.php" method="post">
 				<span>Name:</span><input type="text" name="name" />
+				<span>Notes:</span><input type="text" name="notes" />
 				<input type="submit" />
 			</form>
 		</div>
