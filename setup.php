@@ -8,6 +8,6 @@ if(mysqli_connect_errno($conn)) {
 	echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$query = "CREATE TABLE pantry ();";
+$query = "CREATE TABLE pantry (pantry_id int unsigned auto_increment primary key, name );";
 
 ?>
