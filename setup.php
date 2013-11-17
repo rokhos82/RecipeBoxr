@@ -17,11 +17,11 @@ $query = "CREATE TABLE pantry (pantry_id int unsigned auto_increment primary key
 /* Create pantryEntry table */
 $query = "CREATE TABLE pantryEntry (entry_id int unsigned auto_increment primary key, container_id int unsigned, quantity int, threshold int);";
 
-/* Create ingredientContainer table */
-$query = "CREATE TABLE ingredientContainer (container_id int unsigned auto_increment primary key, name varchar(50),ingredient_id int unsigned, size int, unit_id int unsigned;";
+/* Create foodContainer table */
+$query = "CREATE TABLE foodContainer (container_id int unsigned auto_increment primary key, name varchar(50),food_id int unsigned, size int, unit_id int unsigned;";
 
-/* Create ingredient table */
-$query = "CREATE TABLE ingredient (ingredient_id int unsigned auto_increment primary key, name varchar(50), category varchar(50), note text);";
+/* Create food table */
+$query = "CREATE TABLE food (food_id int unsigned auto_increment primary key, name varchar(50), category varchar(50), note text);";
 
 /* Create recipe table */
 $query = "CREATE TABLE recipe (recipe_id int unsigned auto_increment primary key, varchar title, note text, creator int unsigned, servings int, serving_size int, serving_unit int unsigned);";
