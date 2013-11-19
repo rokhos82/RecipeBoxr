@@ -1,7 +1,7 @@
 <html>
 <head>
 	<title>RecipeBoxr</title>
-	<link rel="stylesheet" type="text/csss" href="main.css" />
+	<link rel="stylesheet" type="text/csss" href="main.css" />"
 </head>
 <body>
 	<div class="nav">Home</div>
@@ -39,5 +39,6 @@ mysqli_close($conn);
 		</div>
 	</div>
 	<div class="foot">(C) 2013 Justin Lane</div>
+	<script type="text/javascript" src="/js/rbr.js"></script>
 </body>
 </html>
