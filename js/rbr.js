@@ -15,7 +15,7 @@ rbr.setupDatabase = function() {
 
 	xmlhttp.onreadystatechange = function() {
 		if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			alert("Setup script has run!");
+			alert(xmlhttp.responseText);
 		}
 	}
 };

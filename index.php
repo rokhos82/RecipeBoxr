@@ -37,8 +37,9 @@ mysqli_close($conn);
 ?>
 			</ul>
 		</div>
+		<button onclick="rbr.setupDatabase();">Setup Database</button>
 	</div>
 	<div class="foot">(C) 2013 Justin Lane</div>
-	<script type="text/javascript" src="/js/rbr.js"></script>
+	<script type="text/javascript" src="./js/rbr.js"></script>
 </body>
 </html>
