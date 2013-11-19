@@ -12,19 +12,25 @@ if(mysqli_connect_errno($conn)) {
 $query = "CREATE TABLE user (user_id int unsigned auto_increment, fname vchar(20), lname vchar(20), uname vchar(30), email vchar(50), PRIMARY KEY (user_id));";
 
 /* Create pantry table */
-$query = "CREATE TABLE pantry (pantry_id int unsigned auto_increment, name vchar(20), notes text, type vchar(20), PRIMARY KEY (pantry_id));";
+$query = "CREATE TABLE pantry (pantry_id int unsigned auto_increment, name vchar(20), notes text, type int unsigned, PRIMARY KEY (pantry_id), FOREIGN KEY (type) REFERENCES pantryType(type_id) ON UPDATE CASCADE ON DELETE RESTRICT);";
+
+/* Create pantryType table */
+$query = "CREATE TABLE pantryType (type_id int unsigned auto_increment, name vchar(20), notes text, PRIMARY KEY (type_id));"
 
 /* Create pantryItem table */
-$query = "CREATE TABLE pantryItem (container_id int unsigned, pantry_id int unsigned, quantity int, threshold int, PRIMARY KEY (container_id,pantry_id), FOREIGN KEY (container_id) REFERENCES foodContainer(container_id) ON UPDATE CASCADE ON DELETE RESTRICT, FOREIGN KEY (pantry_id) REFERENCES pantry(pantry_id));";
+$query = "CREATE TABLE pantryItem (container_id int unsigned, pantry_id int unsigned, quantity int, threshold int, PRIMARY KEY (container_id,pantry_id), FOREIGN KEY (container_id) REFERENCES foodContainer(container_id) ON UPDATE CASCADE ON DELETE RESTRICT, FOREIGN KEY (pantry_id) REFERENCES pantry(pantry_id) ON UPDATE CASCADE ON DELETE RESTRICT);";
 
 /* Create foodContainer table */
-$query = "CREATE TABLE foodContainer (container_id int unsigned auto_increment, name varchar(50),food_id int unsigned, size int, unit_id int unsigned, PRIMARY KEY (container_id);";
+$query = "CREATE TABLE foodContainer (container_id int unsigned auto_increment, name varchar(50),food_id int unsigned, size int, unit_id int unsigned, PRIMARY KEY (container_id), FOREIGN KEY (food_id) REFERENCES food(food_id) ON UPDATE CASCADE ON DELETE RESTRICT;";
 
 /* Create food table */
 $query = "CREATE TABLE food (food_id int unsigned auto_increment, name varchar(50), category varchar(50), note text, PRIMARY KEY (food_id));";
 
 /* Create recipe table */
 $query = "CREATE TABLE recipe (recipe_id int unsigned auto_increment, varchar title, note text, creator int unsigned, servings int, serving_size int, serving_unit int unsigned, PRIMARY KEY(recipe_id));";
+
+/* Create recipeFoodCross table */
+$query = "CREATE TABLE recipeFoodCross (recipe int unsigned, food int unsigned, PRIMARY KEY (recipe,food), FOREIGN KEY (recipe) REFERENCES recipe(recipe_id) ON UPDATE CASCADE ON DELETE CASCADE, FOREIGN KEY (food) REFERENCES food(food_id) ON UPDATE CASCADE ON DELETE RESTRICT);";
 
 /* UTILITY TABLES */
 /* Create units table and populate it. */
@@ -33,5 +39,4 @@ $query = "INSERT INTO util_units (name,abbreviation) VALUES ('Fluid Ounce','fl o
 
 /* Create units conversion table and populate it. */
 $query = "CREATE TABLE until_unit_conv (unit_from int unsigned, unit_to int unsigned, factor float, PRIMARY KEY (unit_from,unit_to), FOREIGN KEY(unit_from) REFERENCES util_units(unit_id), FOREIGN KEY (unit_to) REFERENCES util_units(unit_id);"
-
 ?>
