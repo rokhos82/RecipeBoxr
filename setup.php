@@ -18,6 +18,11 @@ if(!mysqli_query($conn,$query)) {
 	die();
 }
 
+if(!mysqli_select_db($conn,$mysql_db)) {
+	echo(mysqli_error($conn));
+	die();
+}
+
 
 /*
 	Create the tables
@@ -46,7 +51,7 @@ if(!mysqli_query($conn,$query)) {
 }
 
 /* Create configuration table */
-$query = "CREATE TABLE IF NOT EXISTS config (config_id int unsigned auto_increment, key varchar(20), value varchar(50), PRIMARY KEY (config_id);";
+$query = "CREATE TABLE IF NOT EXISTS config (config_id int unsigned auto_increment, `key` varchar(20), `value` varchar(50), PRIMARY KEY (config_id));";
 if(!mysqli_query($conn,$query)) {
 	echo(mysqli_error($conn));
 	die();
