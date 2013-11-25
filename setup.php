@@ -107,14 +107,14 @@ if(!mysqli_query($conn,$query)) {
 }
 
 /* Create food table */
-$query = "CREATE TABLE IF NOT EXISTS food (food_id int unsigned auto_increment, name varchar(50), category varchar(50), note text, PRIMARY KEY (food_id));";
+$query = "CREATE TABLE IF NOT EXISTS food (food_id int unsigned auto_increment, name varchar(50), category varchar(50), notes text, PRIMARY KEY (food_id));";
 if(!mysqli_query($conn,$query)) {
 	echo(mysqli_error($conn));
 	die();
 }
 
 /* Create recipe table */
-$query = "CREATE TABLE IF NOT EXISTS recipe (recipe_id int unsigned auto_increment, title varchar(30), note text, creator int unsigned, servings int, serving_size int, serving_unit int unsigned, PRIMARY KEY(recipe_id), FOREIGN KEY(creator) REFERENCES user(user_id) ON UPDATE CASCADE ON DELETE SET NULL, FOREIGN KEY(serving_unit) REFERENCES util_units(unit_id) ON UPDATE CASCADE ON DELETE RESTRICT);";
+$query = "CREATE TABLE IF NOT EXISTS recipe (recipe_id int unsigned auto_increment, title varchar(30), notes text, creator int unsigned, servings int, serving_size int, serving_unit int unsigned, PRIMARY KEY(recipe_id), FOREIGN KEY(creator) REFERENCES user(user_id) ON UPDATE CASCADE ON DELETE SET NULL, FOREIGN KEY(serving_unit) REFERENCES util_units(unit_id) ON UPDATE CASCADE ON DELETE RESTRICT);";
 if(!mysqli_query($conn,$query)) {
 	echo(mysqli_error($conn));
 	die();

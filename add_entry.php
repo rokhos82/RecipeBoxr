@@ -9,7 +9,10 @@
 		<div class="tools">
 			Tools
 		</div>
-		<div class="main">Main Body</div>
+		<div class="main">
+			<form action="actions/new_entry.php" method="post">
+			</form>
+		</div>
 	</div>
 	<div class="foot">(C) 2013 Justin Lane</div>
 </body>
