@@ -121,7 +121,7 @@ if(!mysqli_query($conn,$query)) {
 }
 
 /* Create product table */
-$query = "CREATE TABLE IF NOT EXISTS product (product_id int unsigned auto_increment, name varchar(50),food_id int unsigned, size int, unit_id int unsigned, recipe_id int unsigned DEFAULT NULL, link_url varchar(50) DEFAULT NULL, note text, PRIMARY KEY (product_id), FOREIGN KEY (food_id) REFERENCES food(food_id) ON UPDATE CASCADE ON DELETE RESTRICT, FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id) ON UPDATE CASCADE ON DELETE SET NULL);";
+$query = "CREATE TABLE IF NOT EXISTS product (product_id int unsigned auto_increment, name varchar(50),food_id int unsigned, size int, unit_id int unsigned, recipe_id int unsigned DEFAULT NULL, link_url varchar(50) DEFAULT NULL, notes text, PRIMARY KEY (product_id), FOREIGN KEY (food_id) REFERENCES food(food_id) ON UPDATE CASCADE ON DELETE RESTRICT, FOREIGN KEY (recipe_id) REFERENCES recipe(recipe_id) ON UPDATE CASCADE ON DELETE SET NULL);";
 if(!mysqli_query($conn,$query)) {
 	echo(mysqli_error($conn));
 	die();

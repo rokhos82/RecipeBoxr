@@ -4,6 +4,7 @@ require("config.php");
 $conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
 if(mysqli_connect_errno($conn)) {
 	echo(mysqli_connect_error($conn));
+	mysqli_close($conn);
 	die();
 }
 

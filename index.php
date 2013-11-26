@@ -11,6 +11,7 @@
 			<a class="block">Users</a>
 			<a class="block" href="setup.php">Setup</a>
 			<a class="block" href="food.php">Food</a>
+			<a class="block" href="products.php">Products</a>
 		</div>
 		<div class="main">
 			<ul>

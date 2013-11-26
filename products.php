@@ -18,14 +18,22 @@ if(mysqli_connect_errno($conn)) {
 	<div class="nav"><a class="inline" href="index.php">Home</a>&gt;<a class="inline">Products</a></div>
 	<div class="container">
 		<div class="tools">
-			<a class="block" href="add_pantry.php">Add Pantry</a>
-			<a class="block">Users</a>
+			<a class="block" href="create_product.php">New Product</a>
 			<a class="block" href="food.php">Food</a>
 		</div>
 		<div class="main">
 			<ul>
 <?php
 $query = "SELECT * FROM product;";
+if($result = mysqli_query($conn,$query)) {
+	while($row = mysqli_fetch_array($result)) {
+		$name = $row["name"];
+		echo("<li>$name</li>");
+	}
+}
+else {
+	echo(mysqli_error($conn));
+}
 ?>
 			</ul>
 		</div>
