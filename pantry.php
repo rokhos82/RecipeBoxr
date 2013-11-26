@@ -26,8 +26,23 @@ if($result = mysqli_query($conn,$query)) {
 		<div class="tools">
 			<a href="add_entry.php">Add Entry</a>
 		</div>
-		<div class="main">Main Body</div>
+		<div class="main">
+			<ul>
+<?php
+$query = "SELECT `product`.* FROM `pantry_item` JOIN `product` ON `pantry_item`.`product_id` WHERE `pantry_item`.`pantry_id`=$pantry_id;";
+if($result = mysqli_query($conn,$query)) {
+	while($row = mysqli_fetch_array($result)) {
+		$name = $row["name"];
+		echo("<li>$name</li>");
+	}
+}
+?>
+			</ul>
+		</div>
 	</div>
 	<div class="foot">(C) 2013 Justin Lane</div>
 </body>
 </html>
+<?php
+mysqli_close($conn);
+?>
