@@ -14,12 +14,10 @@ if(mysqli_connect_errno($conn)) {
 	<link rel="stylesheet" type="text/csss" href="main.css" />
 </head>
 <body>
-	<div class="nav"><?php echo($local_strings["nav_home"]); ?></div>
+	<div class="nav"><a class="inline"><?php echo($local_strings["nav_home"]); ?></a></div>
 	<div class="container">
 		<div class="tools">
-			<a class="block" href="add_pantry.php">Add Pantry</a>
-			<a class="block">Users</a>
-			<a class="block" href="setup.php">Setup</a>
+			<a class="block" href="add_pantry.php"><?php echo($local_strings["menu_add_pantry"]); ?></a>
 			<a class="block" href="food.php"><?php echo($local_strings["menu_food"]); ?></a>
 			<a class="block" href="products.php"><?php echo($local_strings["menu_product"]); ?></a>
 		</div>
@@ -40,9 +38,8 @@ else {
 ?>
 			</ul>
 		</div>
-		<button onclick="rbr.setupDatabase();">Setup Database</button>
 	</div>
-	<div class="foot">(C) 2013 Justin Lane</div>
+	<div class="foot"><?php echo($local_strings["copyright"]); ?></div>
 	<script type="text/javascript" src="./js/rbr.js"></script>
 </body>
 </html>
