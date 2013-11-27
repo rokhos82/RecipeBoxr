@@ -10,7 +10,7 @@ if(mysqli_connect_errno($conn)) {
 ?>
 <html>
 <head>
-	<title><?php echo($local_strings["title"]); ?></title>
+	<title><?php echo _("app.title"); ?></title>
 	<link rel="stylesheet" type="text/csss" href="main.css" />
 </head>
 <body>

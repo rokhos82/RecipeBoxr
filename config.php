@@ -7,5 +7,6 @@ $mysql_db = "recipeboxr";
 $version = "0.0.2";
 
 $language = "en-us";
+$locale = "en_US";
 require("./localize.php");
 ?>
