@@ -25,7 +25,7 @@ if($result = mysqli_query($conn,$query)) {
 	<div class="nav"><a class="inline" href="index.php">Home</a>&gt;<a class="inline">Pantry - <?php echo($pantry_name); ?></a></div>
 	<div class="container">
 		<div class="tools">
-			<a href="add_entry.php">Add Entry</a>
+			<a href=<?php echo "add_entry.php?pantry=$pantry_id"; ?>>Add Entry</a>
 		</div>
 		<div class="main">
 			<ul>
