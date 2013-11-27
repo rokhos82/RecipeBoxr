@@ -1,6 +1,16 @@
+<?php
+require("config.php");
+$conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
+
+if(mysqli_connect_errno($conn)) {
+	echo "Failed to connect to MySQL: " . mysqli_connect_error();
+	mysqli_close($conn);
+	die();
+}
+?>
 <html>
 <head>
-	<title>RecipeBoxr</title>
+	<title><?php echo($localize["en-us"]["title"]); ?></title>
 	<link rel="stylesheet" type="text/csss" href="main.css" />
 </head>
 <body>
@@ -17,13 +27,6 @@
 			<ul>
 
 <?php
-require("config.php");
-$conn = mysqli_connect($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
-
-if(mysqli_connect_errno($conn)) {
-	echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
 $query = "SELECT * FROM pantry;";
 
 if($result = mysqli_query($conn,$query)) {
@@ -34,8 +37,6 @@ if($result = mysqli_query($conn,$query)) {
 else {
 	echo(mysqli_error($conn));
 }
-
-mysqli_close($conn);
 ?>
 			</ul>
 		</div>
@@ -45,3 +46,6 @@ mysqli_close($conn);
 	<script type="text/javascript" src="./js/rbr.js"></script>
 </body>
 </html>
+<?php
+mysqli_close($conn);
+?>
