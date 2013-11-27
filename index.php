@@ -10,18 +10,18 @@ if(mysqli_connect_errno($conn)) {
 ?>
 <html>
 <head>
-	<title><?php echo($localize["en-us"]["title"]); ?></title>
+	<title><?php echo($local_strings["title"]); ?></title>
 	<link rel="stylesheet" type="text/csss" href="main.css" />
 </head>
 <body>
-	<div class="nav">Home</div>
+	<div class="nav"><?php echo($local_strings["nav_home"]); ?></div>
 	<div class="container">
 		<div class="tools">
 			<a class="block" href="add_pantry.php">Add Pantry</a>
 			<a class="block">Users</a>
 			<a class="block" href="setup.php">Setup</a>
-			<a class="block" href="food.php">Food</a>
-			<a class="block" href="products.php">Products</a>
+			<a class="block" href="food.php"><?php echo($local_strings["menu_food"]); ?></a>
+			<a class="block" href="products.php"><?php echo($local_strings["menu_product"]); ?></a>
 		</div>
 		<div class="main">
 			<ul>
