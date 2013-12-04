@@ -7,7 +7,23 @@ if(mysqli_connect_errno($conn)) {
 	mysqli_close($conn);
 	die();
 }
+
 $pantry_id = mysqli_real_escape_string($conn,$_GET["pantry"]);
+
+function buildSelectOptions($res) {
+	while($row = mysqli_fetch_array($res)) {
+		$id = $row["product_id"];
+		$name = $row["name"];
+		echo("<option value=\"$id\">$name</option>");
+	}
+}
+
+$query = "SELECT * FROM product;";
+if(!$result = mysqli_query($conn,$query)) {
+	echo(mysqli_error($conn));
+	mysqli_close($conn);
+	die();
+}
 ?>
 <html>
 <head>
@@ -23,7 +39,17 @@ $pantry_id = mysqli_real_escape_string($conn,$_GET["pantry"]);
 		</div>
 		<div class="main">
 			<form action="actions/new_entry.php" method="post">
-				<span>Name:</span>
+				<div class="row">
+					<span>Product:</span><select name="product_id"><?php buildSelectOptions($result); ?></select>
+				</div>
+				<div class="row">
+					<span>Quantity:</span><input type="text" name="quantity" />
+					<span>Threshold:</span><input type="text" name="threshold" />
+				</div>
+				<div class="row">
+					<input type="submit" value="Add Pantry Item" />
+					<input type="hidden" name="pantry_id" value="<?php echo($pantry_id); ?>" />
+				</div>
 			</form>
 		</div>
 	</div>
