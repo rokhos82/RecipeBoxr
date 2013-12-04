@@ -28,17 +28,20 @@ if($result = mysqli_query($conn,$query)) {
 			<a href=<?php echo "add_entry.php?pantry=$pantry_id"; ?>>Add Entry</a>
 		</div>
 		<div class="main">
-			<ul>
+			<table>
+				<tr><td>Product</td><td>Quantity</td><td>Threshold</td></tr>
 <?php
-$query = "SELECT `product`.* FROM `pantry_item` LEFT JOIN `product` ON `pantry_item`.`product_id`=`product`.`product_id` WHERE `pantry_item`.`pantry_id`=$pantry_id;";
+$query = "SELECT `product`.`name AS `name`,`pantry_item`.`quantity` AS `quantity`,`pantry_item`.`threshold` AS `threshold` FROM `pantry_item` LEFT JOIN `product` ON `pantry_item`.`product_id`=`product`.`product_id` WHERE `pantry_item`.`pantry_id`=$pantry_id;";
 if($result = mysqli_query($conn,$query)) {
 	while($row = mysqli_fetch_array($result)) {
 		$name = $row["name"];
-		echo("<li>$name</li>");
+		$quantity = $row["quantity"];
+		$threshold = $row["threshold"];
+		echo("<tr><td>$name</td><td>$quantity</td><td>$threshold</td></tr>");
 	}
 }
 ?>
-			</ul>
+			</table>
 		</div>
 	</div>
 	<div class="foot">(C) 2013 Justin Lane</div>
