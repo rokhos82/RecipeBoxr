@@ -17,9 +17,6 @@ if(mysqli_connect_errno($conn)) {
 	<div class="nav"><a class="inline"><?php echo($local_strings["nav_home"]); ?></a></div>
 	<div class="container">
 		<div class="tools">
-			<a class="block" href="add_pantry.php"><?php echo($local_strings["menu_add_pantry"]); ?></a>
-			<a class="block" href="food.php"><?php echo($local_strings["menu_food"]); ?></a>
-			<a class="block" href="products.php"><?php echo($local_strings["menu_product"]); ?></a>
 		</div>
 		<div class="main">
 			<form action="./actions/login.php" method="POST">
