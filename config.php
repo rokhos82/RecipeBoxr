@@ -8,5 +8,6 @@ $version = "0.0.2";
 
 $language = "en-us";
 $locale = "en_US";
-require("./localize.php");
+$include_path = dirname(__FILE__);
+require("$include_path/localize.php");
 ?>
