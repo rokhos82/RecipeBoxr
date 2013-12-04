@@ -30,7 +30,7 @@ if($result = mysqli_query($conn,$query)) {
 		<div class="main">
 			<ul>
 <?php
-$query = "SELECT `product`.* FROM `pantry_item` JOIN `product` ON `pantry_item`.`product_id` WHERE `pantry_item`.`pantry_id`=$pantry_id;";
+$query = "SELECT `product`.* FROM `pantry_item` LEFT JOIN `product` ON `pantry_item`.`product_id`=`product`.`product_id` WHERE `pantry_item`.`pantry_id`=$pantry_id;";
 if($result = mysqli_query($conn,$query)) {
 	while($row = mysqli_fetch_array($result)) {
 		$name = $row["name"];
