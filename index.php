@@ -10,5 +10,16 @@ if(mysqli_connect_errno($conn)) {
 
 mysqli_close($conn);
 
-$model = new rbr_model();
+function __autoload($class_name) {
+	$filename = $class_name . ".php";
+	if(file_exists("./libs/" . $filename)) {
+		include("./libs/" . $filename);
+	}
+}
+
+$model = new rbrModel();
+$controller = new controller($model);
+$view = new view($controller,$model);
+
+$view->output();
 ?>

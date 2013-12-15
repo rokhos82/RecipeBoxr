@@ -1,5 +1,5 @@
 <?php
-class rbr_controller {
+class controller {
 	private $model;
 
 	public function __constructor($model) {
