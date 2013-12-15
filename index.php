@@ -15,6 +15,12 @@ function __autoload($class_name) {
 	if(file_exists("./libs/" . $filename)) {
 		include("./libs/" . $filename);
 	}
+	elseif (file_exists("./model/" . $filename)) {
+		include("./model/" . $filename);
+	}
+	elseif (file_exists("./view/" . $filename)) {
+		include("./view/" . $filename);
+	}
 }
 
 $model = new rbrModel();
