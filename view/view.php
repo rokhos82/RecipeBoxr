@@ -10,10 +10,10 @@ class view {
 	}
 
 	public function output() {
-		include_once("./header.php");
-		$txt = $model->text;
+		include_once("./view/header.php");
+		$txt = $this->model->text;
 		echo("<div class=\"main\">${txt}</div>");
-		include_once("./footer.php");
+		include_once("./view/footer.php");
 	}
 }
 
