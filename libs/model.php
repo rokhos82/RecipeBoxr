@@ -7,7 +7,7 @@ class model {
 	function __construct() {
 		try {
 			$this->db = new Database();
-		} catch() {
+		} catch(Exception $e) {
 			die("Database connection could not be established.");
 		}
 	}
