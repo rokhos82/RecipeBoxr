@@ -1,5 +1,6 @@
 <?php
 $temp = array();
+$temp["welcome"] = "Hello!";
 $temp["title"] = "RecipeBoxR";
 $temp["copyright"] = "(C) 2013 Justin Lane";
 
