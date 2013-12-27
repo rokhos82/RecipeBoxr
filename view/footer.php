@@ -1,4 +1,4 @@
 </div>
-<div class="foot"><?php echo($_GLOBALS["local_strings"]["copyright"]); ?></div>
+<div class="foot"><?php echo($copyright); ?></div>
 </body>
 </html>
