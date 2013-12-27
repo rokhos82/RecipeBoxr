@@ -12,6 +12,7 @@ class view {
 	public function output() {
 		global $local_strings;
 		include_once("./view/header.php");
+		include_once("./view/tools.php");
 		$txt = $local_strings["welcome"];
 		echo("<div class=\"main\">${txt}</div>");
 		include_once("./view/footer.php");

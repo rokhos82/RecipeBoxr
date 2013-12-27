@@ -1,4 +1,5 @@
 <?php
+session_start();
 $mysql_host = "127.0.0.1";
 $mysql_user = "recipe_user";
 $mysql_pass = "b0xr";
