@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION["logged_in"] = false;
 
 global $_GLOBALS;
 $_GLOBALS["mysql_host"] = "127.0.0.1";

@@ -14,7 +14,12 @@ class view {
 		$include_path = $_GLOBALS["include_path"];
 		include_once("${include_path}/view/header.php");
 		include_once("${include_path}/view/tools.php");
-		$txt = $_GLOBALS["local_strings"]["welcome"];
+		if($_SESSION["logged_in"]) {
+			$txt = $_GLOBALS["local_strings"]["welcome"];
+		}
+		else {
+			$txt = $_GLOBALS["local_strings"]["login_msg"];
+		}
 		echo("<div class=\"main\">${txt}</div>");
 		include_once("${include_path}/view/footer.php");
 	}
