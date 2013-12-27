@@ -3,17 +3,19 @@
 class view {
 	private $controller;
 	private $model;
+	private $local;
 
-	public function __constructor($controller,$model) {
+	public function __construct($controller,$model,$local) {
 		$this->controller = $controller;
 		$this->model = $model;
+		$this->local = $local;
 	}
 
 	public function output() {
 		global $_GLOBALS;
 		$include_path = $_GLOBALS["include_path"];
-		include_once("${include_path}/view/header.php");
-		include_once("${include_path}/view/tools.php");
+		$this->drawHeader($include_path);
+		$this->drawMenu($include_path);
 		if($_SESSION["logged_in"]) {
 			$txt = $_GLOBALS["local_strings"]["welcome"];
 		}
@@ -21,7 +23,23 @@ class view {
 			$txt = $_GLOBALS["local_strings"]["login_msg"];
 		}
 		echo("<div class=\"main\">${txt}</div>");
-		include_once("${include_path}/view/footer.php");
+		$this->drawFooter($include_path);
+		
+	}
+
+	public function drawHeader($path) {
+		$title = $this->local["title"];
+		include_once("${path}/view/header.php");
+	}
+
+	public function drawMenu($path) {
+		$tools = $this->controller->getMenuItems();
+		include_once("${path}/view/tools.php");
+	}
+
+	public function drawFooter($path) {
+		$copyright = $this->local["copyright"];
+		include_once("${path}/view/footer.php");
 	}
 }
 
