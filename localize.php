@@ -1,7 +1,6 @@
 <?php
-global $localize;
-global $local_strings;
-$localize = array();
+$_GLOBALS["localize"] = array();
 require("$include_path/lang/en-us.php");
-$local_strings = $localize[$language];
+$lang = $_GLOBALS["language"];
+$_GLOBALS["local_strings"] = $_GLOBALS["localize"][$lang];
 ?>

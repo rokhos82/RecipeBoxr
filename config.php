@@ -1,14 +1,16 @@
 <?php
 session_start();
-$mysql_host = "127.0.0.1";
-$mysql_user = "recipe_user";
-$mysql_pass = "b0xr";
-$mysql_db = "recipeboxr";
 
-$version = "0.0.2";
+global $_GLOBALS;
+$_GLOBALS["mysql_host"] = "127.0.0.1";
+$_GLOBALS["mysql_user"] = "recipe_user";
+$_GLOBALS["mysql_pass"] = "b0xr";
+$_GLOBALS["mysql_db"] = "recipeboxr";
+$_GLOBALS["version"] = "0.0.3";
+$_GLOBALS["language"] = "en-us";
+$_GLOBALS["include_path"] = dirname(__FILE__);
 
-$language = "en-us";
-$include_path = dirname(__FILE__);
+$include_path = $_GLOBALS["include_path"];
 require("${include_path}/localize.php");
 
 function __autoload($class_name) {
