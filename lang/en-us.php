@@ -18,5 +18,5 @@ $temp["menu_pantry"] = "Pantries";
 $temp["form_name"] = "Name";
 $temp["form_note"] = "Note";
 
-$localize["en-us"] = $temp;
+$_GLOBALS["localize"]["en-us"] = $temp;
 ?>

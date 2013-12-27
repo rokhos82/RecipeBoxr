@@ -1,6 +1,9 @@
+<?php
+global $_GLOBALS;
+?>
 <html>
 <head>
-	<title><?php global $local_strings; echo $local_strings["title"]; ?></title>
+	<title><?php echo $_GLOBALS["local_strings"]["title"]; ?></title>
 	<link rel="stylesheet" type="text/csss" href="main.css" />
 </head>
 <body>

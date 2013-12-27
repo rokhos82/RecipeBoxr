@@ -10,12 +10,13 @@ class view {
 	}
 
 	public function output() {
-		global $local_strings;
-		include_once("./view/header.php");
-		include_once("./view/tools.php");
-		$txt = $local_strings["welcome"];
+		global $_GLOBALS;
+		$include_path = $_GLOBALS["include_path"];
+		include_once("${include_path}/view/header.php");
+		include_once("${include_path}/view/tools.php");
+		$txt = $_GLOBALS["local_strings"]["welcome"];
 		echo("<div class=\"main\">${txt}</div>");
-		include_once("./view/footer.php");
+		include_once("${include_path}/view/footer.php");
 	}
 }
 
