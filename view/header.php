@@ -6,5 +6,3 @@
 <body>
 	<div class="nav"><a class="inline" href="index.php">Home</a>&gt;<a class="inline">Pantry</a></div>
 	<div class="container">
-		<div class="tools">
-		</div>
