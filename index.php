@@ -1,9 +1,15 @@
 <?php
 require("config.php");
 
+if(isset($_GET["action"])) {
+	$action = $_GET["action"];
+}
+else {
+	$action = "start";
+}
+
 $model = new rbrModel();
 $controller = new controller($model);
-$view = new view($controller,$model,$_GLOBALS["local_strings"]);
 
-$view->output();
+$controller->perform($action);
 ?>
