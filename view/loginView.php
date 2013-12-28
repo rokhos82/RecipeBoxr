@@ -1,10 +1,7 @@
 <?php
 class loginView extends view {	
-	public $path;
-
 	public function __construct($local,$path) {
-		parent::__construct($local);		
-		$this->path = $path;
+		parent::__construct($local,$path);		
 	}
 
 	public function initialize($controller) {
