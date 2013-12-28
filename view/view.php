@@ -1,14 +1,15 @@
 <?php
 
 class view {
-	private $controller;
-	private $model;
-	private $local;
+	protected $controller;
+	protected $local;
 
-	public function __construct($controller,$model,$local) {
-		$this->controller = $controller;
-		$this->model = $model;
+	public function __construct($local) {
 		$this->local = $local;
+	}
+
+	public function initialize($controller) {
+		$this->controller = $controller;
 	}
 
 	public function output() {
@@ -16,13 +17,10 @@ class view {
 		$include_path = $_GLOBALS["include_path"];
 		$this->drawHeader($include_path);
 		$this->drawMenu($include_path);
-		if($_SESSION["logged_in"]) {
-			$txt = $_GLOBALS["local_strings"]["welcome"];
-		}
-		else {
-			$txt = $_GLOBALS["local_strings"]["login_msg"];
-		}
+		
+		$txt = $_GLOBALS["local_strings"]["welcome"];
 		echo("<div class=\"main\">${txt}</div>");
+		
 		$this->drawFooter($include_path);
 		
 	}
@@ -40,6 +38,14 @@ class view {
 	public function drawFooter($path) {
 		$copyright = $this->local["copyright"];
 		include_once("${path}/view/footer.php");
+	}
+
+	public function startMain() {
+		echo("<div class=\"main\">");
+	}
+
+	public function endMain() {
+		echo("</div>");
 	}
 }
 
