@@ -3,8 +3,9 @@
 class view {
 	protected $controller;
 	protected $local;
+	protected $path;
 
-	public function __construct($local) {
+	public function __construct($local,$path) {
 		$this->local = $local;
 	}
 
@@ -13,29 +14,30 @@ class view {
 	}
 
 	public function output() {
-		global $_GLOBALS;
-		$include_path = $_GLOBALS["include_path"];
-		$this->drawHeader($include_path);
-		$this->drawMenu($include_path);
+		$this->drawHeader();
+		$this->drawMenu();
 		
-		$txt = $_GLOBALS["local_strings"]["welcome"];
+		$txt = $this->local["welcome"];
 		echo("<div class=\"main\">${txt}</div>");
 		
-		$this->drawFooter($include_path);
+		$this->drawFooter();
 		
 	}
 
-	public function drawHeader($path) {
+	public function drawHeader() {
+		$path = $this->path;
 		$title = $this->local["title"];
 		include_once("${path}/view/header.php");
 	}
 
-	public function drawMenu($path) {
+	public function drawMenu() {
+		$path = $this->path;
 		$tools = $this->controller->getMenuItems();
 		include_once("${path}/view/tools.php");
 	}
 
-	public function drawFooter($path) {
+	public function drawFooter() {
+		$path = $this->path;
 		$copyright = $this->local["copyright"];
 		include_once("${path}/view/footer.php");
 	}

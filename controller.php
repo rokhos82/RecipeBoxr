@@ -11,7 +11,7 @@ class controller {
 		global $_GLOBALS;
 		$local = $_GLOBALS["local_strings"];
 		if($action == "start") {
-			$this->view = new view($local);
+			$this->view = new view($local,$_GLOBALS["include_path"]);
 			$this->view->initialize($this);
 			$this->view->output();
 		}
