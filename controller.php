@@ -16,6 +16,10 @@ class controller {
 			$this->view->output();
 		}
 		elseif($action == "login") {
+			if(isset($_GET["username"])) {
+				$user = $_GET["username"];
+				$pass = $_GET["password"];
+			}
 			$this->view = new loginView($local,$_GLOBALS["include_path"]);
 			$this->view->initialize($this);
 			$this->view->output();

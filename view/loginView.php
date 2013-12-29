@@ -9,11 +9,12 @@ class loginView extends view {
 	}
 
 	public function output() {
+		$path = $this->path;
 		$this->drawHeader();
 		$this->drawMenu();
 
 		$this->startMain();
-		echo("<h1>Login Page Here</h1>");
+		include("${path}/view/page/loginForm.php");
 		$this->endMain();
 
 		$this->drawFooter();
