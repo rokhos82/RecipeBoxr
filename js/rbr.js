@@ -19,3 +19,14 @@ rbr.setupDatabase = function() {
 		}
 	}
 };
+
+rbr.loginSubmit = function(fid,pid) {
+	var form = document.getElementById(fid);
+
+	var password = document.getElementById(pid);
+	var pass = password.value;
+	var pass = CryptoJS.SHA1(pass);
+	password.value = pass;
+	
+	form.submit();
+};

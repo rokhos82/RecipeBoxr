@@ -10,7 +10,7 @@ class loginView extends view {
 
 	public function output() {
 		$path = $this->path;
-		$this->drawHeader();
+		$this->drawHeader(["./js/rbr.js","./js/sha1.js"]);
 		$this->drawMenu();
 
 		$this->startMain();
@@ -20,16 +20,16 @@ class loginView extends view {
 		$this->drawFooter();
 	}
 
-	public function drawHeader() {
-		parent::drawHeader($this->path);
+	public function drawHeader($scripts) {
+		parent::drawHeader($scripts);
 	}
 
 	public function drawMenu() {
-		parent::drawMenu($this->path);
+		parent::drawMenu();
 	}
 
 	public function drawFooter() {
-		parent::drawFooter($this->path);
+		parent::drawFooter();
 	}
 }
 ?>

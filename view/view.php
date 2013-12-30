@@ -14,7 +14,7 @@ class view {
 	}
 
 	public function output() {
-		$this->drawHeader();
+		$this->drawHeader(["./js/rbr.js","./js/sha1.js"]);
 		$this->drawMenu();
 		
 		$txt = $this->local["welcome"];
@@ -24,7 +24,7 @@ class view {
 		
 	}
 
-	public function drawHeader() {
+	public function drawHeader($scripts) {
 		$path = $this->path;
 		$title = $this->local["title"];
 		include_once("${path}/view/header.php");
