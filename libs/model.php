@@ -1,10 +1,11 @@
 <?php
 
 class model {
+	protected $db;
 	/**
 	 * Creates a mysqli database connection when a model is constructed.
 	 */
-	function __construct() {
+	public function __construct() {
 		try {
 			$this->db = new Database();
 		} catch(Exception $e) {

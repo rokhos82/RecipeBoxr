@@ -2,7 +2,8 @@
 
 class database extends mysqli {
 	public function __construct() {
-		parent::__construct($mysql_host,$mysql_user,$mysql_pass,$mysql_db);
+		global $_GLOBALS;
+		parent::__construct($_GLOBALS["mysql_host"],$_GLOBALS["mysql_user"],$_GLOBALS["mysql_pass"],$_GLOBALS["mysql_db"]);
 	}
 }
 
