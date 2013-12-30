@@ -19,10 +19,18 @@ class controller {
 			if(isset($_GET["username"])) {
 				$user = $_GET["username"];
 				$pass = $_GET["password"];
+				$_SESSION["username"] = $user;
+				header("Location: index.php?action=\"home\"");
 			}
-			$this->view = new loginView($local,$_GLOBALS["include_path"]);
-			$this->view->initialize($this);
-			$this->view->output();
+			else {
+				$this->view = new loginView($local,$_GLOBALS["include_path"]);
+				$this->view->initialize($this);
+				$this->view->output();
+			}
+		}
+		elseif($action == "home") {
+			$u = $_SESSION["username"];
+			echo("Welcome ${u}!");
 		}
 	}
 
