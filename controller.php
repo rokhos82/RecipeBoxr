@@ -28,8 +28,11 @@ class controller {
 				if($this->model->authenticateUser($user,$pass)) {
 					$loggedIn = true;
 					$_SESSION["username"] = $user;
+					header("Location: index.php?action=home");
 				}
-				header("Location: index.php?action=home");
+				else {
+					header("Location: index.php?action=login");
+				}
 			}
 
 			if(!$loggedIn) {
@@ -40,7 +43,7 @@ class controller {
 		}
 		elseif($action == "home") {
 			$u = $_SESSION["username"];
-			echo("Welcome ${u}!");
+			echo("<html>Welcome ${u}!</html>");
 		}
 	}
 
