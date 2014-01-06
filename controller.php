@@ -76,5 +76,9 @@ class controller {
 		}
 		return $items;
 	}
+
+	public function getModel() {
+		return $this->model;
+	}
 }
 ?>

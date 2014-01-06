@@ -11,6 +11,10 @@ class rbrModel extends model {
 	public function authenticateUser($user,$pass) {
 		$query = "SELECT * FROM user WHERE uname=\"${user}\" AND password=\"${pass}\";";
 		$result = $this->db->query($query);
+		if($result->num_rows > 0) {
+			$row = $result->fetch_assoc();
+			$_SESSION["userid"] = $row["user_id"];
+		}
 		return ($result->num_rows > 0);
 	}
 }

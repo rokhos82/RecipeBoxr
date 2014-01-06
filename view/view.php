@@ -2,6 +2,7 @@
 
 class view {
 	protected $controller;
+	protected $model;
 	protected $local;
 	protected $path;
 
@@ -11,6 +12,7 @@ class view {
 
 	public function initialize($controller) {
 		$this->controller = $controller;
+		$this->model = $controller->getModel();
 	}
 
 	public function output($page) {
