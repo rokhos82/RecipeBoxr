@@ -52,3 +52,8 @@ rbr.createUser = function(fid,pid1,pid2) {
 		alert("Passwords must match!");
 	}
 }
+
+rbr.submitForm = function(fid) {
+	var form = document.getElementById(fid);
+	form.submit();
+};

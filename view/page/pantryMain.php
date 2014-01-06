@@ -13,4 +13,9 @@ $query = "SELECT * FROM `pantry` JOIN `user_pantry_cross` ON `pantry`.`pantry_id
 ?>
 </tbody>
 </table>
-<p>New pantry form goes here</p>
+<form action="index.php" method="get" id="newPantryForm">
+<label></label><input type="text" name="name" /><br />
+<input type="text" name="notes" /><br />
+<input type="hidden" name="action" value="pantryCreate" /><br />
+<input type="button" value="Create" onclick="rbr.formSubmit('newPantryForm');" /><br />
+</form>
