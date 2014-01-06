@@ -45,6 +45,11 @@ class controller {
 				session_destroy();
 				header("Location: index.php?action=start");
 			}
+			elseif($action == "adminMain" || $action == "adminUserList") {
+				$this->view = new view($local,$_GLOBALS["include_path"]);
+				$this->view->initialize($this);
+				$this->view->output($action . ".php");
+			}
 			elseif($action == "home") {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);
@@ -69,6 +74,7 @@ class controller {
 			$user = $_SESSION["username"];
 			$query = "SELECT * FROM menus WHERE user=${user}";
 			$items["Pantry"] = "index.php?action=pantry";
+			$items["Admin"] = "index.php?action=adminMain";
 			$items["Logout"] = "index.php?action=logout";
 		}
 		else {
