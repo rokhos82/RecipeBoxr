@@ -54,10 +54,25 @@ class rbrModel extends model {
 	public function createPantry($uid,$name,$notes) {
 		$uid = $this->db->real_escape_string($uid);
 		$name = $this->db->real_escape_string($name);
-		$notes = $this->db->real_escape_string($notes)
-;		$query = "INSERT INTO pantry(name,notes) VALUES (\"${name}\",\"${notes}\");";
+		$notes = $this->db->real_escape_string($notes);
+		$query = "INSERT INTO pantry(name,notes) VALUES (\"${name}\",\"${notes}\");";
+		$this->db->query($query);
 		$pid = $this->db->insert_id;
 		$query = "INSERT INTO user_pantry_cross(user_id,pantry_id) VALUES (${uid},${pid});";
+		$this->db->query($query);
+	}
+
+	public function getPantryList($uid) {
+		$uid = $this->db->real_escape_string($uid);
+		$query = "SELECT `pantry`.`pantry_id` AS `pantry_id`,`pantry`.`name` AS `name`,`pantry`.`notes` AS `notes` FROM `pantry` LEFT JOIN `user_pantry_cross` ON `pantry`.`pantry_id`=`user_pantry_cross`.`pantry_id` WHERE `user_pantry_cross`.`user_id`=${uid};";
+		$results = $this->db->query($query);
+		return $results;
+	}
+
+	public function deletePantry($pid) {
+		$pid = $this->db->real_escape_string($pid);
+		$query = "DELETE FROM `pantry` WHERE `pantry_id`=${pid};";
+		$this->db->query($query);
 	}
 }
 

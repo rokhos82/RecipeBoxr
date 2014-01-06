@@ -1,0 +1,1 @@
+<p>Deatil for <? echo $name; ?></p>

@@ -53,7 +53,7 @@ rbr.createUser = function(fid,pid1,pid2) {
 	}
 }
 
-rbr.submitForm = function(fid) {
+rbr.formSubmit = function(fid) {
 	var form = document.getElementById(fid);
 	form.submit();
 };
