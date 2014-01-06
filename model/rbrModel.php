@@ -50,6 +50,15 @@ class rbrModel extends model {
 		$query = "INSERT INTO user(fname,lname,uname,password,email) VALUES (\"${fname}\",\"${lname}\",\"${uname}\",\"${pass}\",\"${email}\");";
 		$this->db->query($query);
 	}
+
+	public function createPantry($uid,$name,$notes) {
+		$uid = $this->db->real_escape_string($uid);
+		$name = $this->db->real_escape_string($name);
+		$notes = $this->db->real_escape_string($notes)
+;		$query = "INSERT INTO pantry(name,notes) VALUES (\"${name}\",\"${notes}\");";
+		$pid = $this->db->insert_id;
+		$query = "INSERT INTO user_pantry_cross(user_id,pantry_id) VALUES (${uid},${pid});";
+	}
 }
 
 ?>

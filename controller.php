@@ -69,10 +69,10 @@ class controller {
 				$this->view->initialize($this);
 				$this->view->output("welcome.php");
 			}
-			elseif($action == "pantry") {
+			elseif($action == "pantryMain") {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);
-				$this->view->output("pantry.php");	
+				$this->view->output($action . ".php");	
 			}
 			else {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
@@ -87,7 +87,7 @@ class controller {
 		if(isset($_SESSION["username"])) {
 			$user = $_SESSION["username"];
 			$query = "SELECT * FROM menus WHERE user=${user}";
-			$items["Pantry"] = "index.php?action=pantry";
+			$items["Pantry"] = "index.php?action=pantryMain";
 			$items["Admin"] = "index.php?action=adminMain";
 			$items["Logout"] = "index.php?action=logout";
 		}
