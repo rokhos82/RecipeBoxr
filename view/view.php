@@ -13,12 +13,14 @@ class view {
 		$this->controller = $controller;
 	}
 
-	public function output() {
+	public function output($page) {
+		$path = $this->path;
 		$this->drawHeader(["./js/rbr.js","./js/sha1.js"]);
 		$this->drawMenu();
 		
-		$txt = $this->local["welcome"];
-		echo("<div class=\"main\">${txt}</div>");
+		$this->startMain();
+		include_once("${path}/view/page/${page}");
+		$this->endMain();
 		
 		$this->drawFooter();
 		
