@@ -17,6 +17,18 @@ class rbrModel extends model {
 		}
 		return ($result->num_rows > 0);
 	}
+
+	public function getUserList() {
+		$query = "SELECT * FROM user ORDER BY user_id;";
+		$result = $this->db->query($query);
+		$users = array();
+		if($result) {
+			while($row = $result->fetch_assoc()) {
+				$users[] = $row;
+			}
+		}
+		return $users;
+	}
 }
 
 ?>
