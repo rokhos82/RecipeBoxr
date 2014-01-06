@@ -51,6 +51,9 @@ class controller {
 				$this->view->output("welcome.php");
 			}
 			elseif($action == "pantry") {
+				$this->view = new view($local,$_GLOBALS["include_path"]);
+				$this->view->initialize($this);
+				$this->view->output("pantry.php");	
 			}
 			else {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
