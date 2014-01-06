@@ -69,10 +69,33 @@ class controller {
 				$this->view->initialize($this);
 				$this->view->output("welcome.php");
 			}
-			elseif($action == "pantryMain") {
+			elseif($action == "pantryMain" ||
+				   $action == "pantryCreate") {
+				if(isset($_GET["name"])) {
+					$this->model->createPantry($_SESSION["userid"],$_GET["name"],$_GET["notes"]);
+					header("Location: index.php?action=pantryMain");
+				}
 				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);
 				$this->view->output($action . ".php");	
+			}
+			elseif($action == "pantryDelete") {
+				$pid = isset($_GET["pantry_id"]) ? $_GET["pantry_id"] : false;
+				if($pid) {
+					$this->model->deletePantry($pid);
+				}
+				header("Location: index.php?action=pantryMain");
+			}
+			elseif($action == "pantryDetail") {
+				$pid = isset($_GET["pantry_id"]) ? $_GET["pantry_id"] : false;
+				if($pid) {
+					this->view = new view($local,$_GLOBALS["include_path]"]);
+					$this->view->initialize($this);
+					$this->view->output($action . ".php");
+				}
+				else {
+					header("Location: index.php?action=pantryMain");
+				}
 			}
 			else {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
