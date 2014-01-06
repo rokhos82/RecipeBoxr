@@ -10,53 +10,66 @@ class controller {
 	public function perform($action) {
 		global $_GLOBALS;
 		$local = $_GLOBALS["local_strings"];
-		if($action == "start") {
-			$this->view = new view($local,$_GLOBALS["include_path"]);
-			$this->view->initialize($this);
-			$this->view->output("greeting.php");
-		}
-		elseif($action == "logout") {
-			session_destroy();
-			header("Location: index.php?action=start");
-		}
-		elseif($action == "login") {
-			$loggedIn = isset($_SESSION["username"]) ? true : false;
-			if(isset($_GET["username"])) {
-				$user = $_GET["username"];
-				$pass = $_GET["password"];
-				$query = "SELECT * FROM user WHERE uname=${user} AND password=${pass}";
-				if($this->model->authenticateUser($user,$pass)) {
-					$loggedIn = true;
-					$_SESSION["username"] = $user;
-					header("Location: index.php?action=home");
+
+		if(!isset($_SESSION["username"])) {
+			if($action == "login") {
+				$loggedIn = isset($_SESSION["username"]) ? true : false;
+				if(isset($_GET["username"])) {
+					$user = $_GET["username"];
+					$pass = $_GET["password"];
+					$query = "SELECT * FROM user WHERE uname=${user} AND password=${pass}";
+					if($this->model->authenticateUser($user,$pass)) {
+						$loggedIn = true;
+						$_SESSION["username"] = $user;
+						header("Location: index.php?action=home");
+					}
+					else {
+						header("Location: index.php?action=login");
+					}
 				}
-				else {
-					header("Location: index.php?action=login");
+
+				if(!$loggedIn) {
+					$this->view = new view($local,$_GLOBALS["include_path"]);
+					$this->view->initialize($this);
+					$this->view->output("loginForm.php");
 				}
 			}
-
-			if(!$loggedIn) {
+			else {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);
-				$this->view->output("loginForm.php");
+				$this->view->output("greeting.php");
 			}
 		}
-		elseif($action == "home") {
-			$this->view = new view($local,$_GLOBALS["include_path"]);
-			$this->view->initialize($this);
-			$this->view->output("welcome.php");
+		else {
+			if($action == "logout") {
+				session_destroy();
+				header("Location: index.php?action=start");
+			}
+			elseif($action == "home") {
+				$this->view = new view($local,$_GLOBALS["include_path"]);
+				$this->view->initialize($this);
+				$this->view->output("welcome.php");
+			}
+			elseif($action == "pantry") {
+			}
+			else {
+				$this->view = new view($local,$_GLOBALS["include_path"]);
+				$this->view->initialize($this);
+				$this->view->output("welcome.php");
+			}
 		}
 	}
 
 	public function getMenuItems() {
 		$items = array();
-		if(isset($_SESSION["user"])) {
-			$user = $_SESSION["user"];
+		if(isset($_SESSION["username"])) {
+			$user = $_SESSION["username"];
 			$query = "SELECT * FROM menus WHERE user=${user}";
+			$items["Pantry"] = "index.php?action=pantry";
+			$items["Logout"] = "index.php?action=logout";
 		}
 		else {
-			$items[] = "<a class=\"block\" href=\"index.php?action=login\">Login</a>";
-			$items[] = "<a class=\"block\" href=\"index.php?action=logout\">Logout</a>";
+			$items["Login"] = "index.php?action=login";
 		}
 		return $items;
 	}

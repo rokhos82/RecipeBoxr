@@ -1,12 +1,7 @@
 <?php
 require("config.php");
 
-if(isset($_GET["action"])) {
-	$action = $_GET["action"];
-}
-else {
-	$action = "start";
-}
+$action = isset($_GET["action"]) ? $_GET["action"] : "start";
 
 $model = new rbrModel();
 $controller = new controller($model);
