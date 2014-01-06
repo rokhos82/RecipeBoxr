@@ -13,7 +13,7 @@ class controller {
 		if($action == "start") {
 			$this->view = new view($local,$_GLOBALS["include_path"]);
 			$this->view->initialize($this);
-			$this->view->output();
+			$this->view->output("greeting.php");
 		}
 		elseif($action == "logout") {
 			session_destroy();
@@ -36,14 +36,15 @@ class controller {
 			}
 
 			if(!$loggedIn) {
-				$this->view = new loginView($local,$_GLOBALS["include_path"]);
+				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);
-				$this->view->output();
+				$this->view->output("loginForm.php");
 			}
 		}
 		elseif($action == "home") {
-			$u = $_SESSION["username"];
-			echo("<html>Welcome ${u}!</html>");
+			$this->view = new view($local,$_GLOBALS["include_path"]);
+			$this->view->initialize($this);
+			$this->view->output("welcome.php");
 		}
 	}
 

@@ -8,7 +8,7 @@ class loginView extends view {
 		parent::initialize($controller);		
 	}
 
-	public function output() {
+	public function output($page) {
 		$path = $this->path;
 		$this->drawHeader(["./js/rbr.js","./js/sha1.js"]);
 		$this->drawMenu();
