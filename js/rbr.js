@@ -25,8 +25,30 @@ rbr.loginSubmit = function(fid,pid) {
 
 	var password = document.getElementById(pid);
 	var pass = password.value;
-	var pass = CryptoJS.SHA1(pass);
+	pass = CryptoJS.SHA1(pass);
 	password.value = pass;
 	
 	form.submit();
 };
+
+rbr.createUser = function(fid,pid1,pid2) {
+	var form = document.getElementById(fid);
+	
+	var password1 = document.getElementById(pid1);	
+	var pass1 = password1.value;
+	pass1 = CryptoJS.SHA1(pass1);
+	var password2 = document.getElementById(pid2);
+	var pass2 = password2.value;
+	pass2 = CryptoJS.SHA1(pass2);
+
+	if(pass1.toString() == pass2.toString()) {
+		password1.value = pass1;
+		password2.value = "";
+		form.submit();
+	}
+	else {
+		password1.value = "";
+		password2.value = "";
+		alert("Passwords must match!");
+	}
+}

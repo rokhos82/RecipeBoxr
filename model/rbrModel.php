@@ -29,6 +29,27 @@ class rbrModel extends model {
 		}
 		return $users;
 	}
+
+	public function getUserDetails($id) {
+		$query = "SELECT * FROM user WHERE user_id=${id};";
+		$result = $this->db->query($query);
+		return $result->fetch_assoc();
+	}
+
+	public function updateUserDetails($id,$uname,$fname,$lname,$pass,$email) {
+		$query = "UPDATE user SET uname=\"${uname}\",fname=\"${fname}\",lname=\"${lname}\",pass=\"${pass}\",email=\"${email}\" WHERE user_id=${id};";
+		$result = $this->db->query($query);
+	}
+
+	public function createUser($fname,$lname,$uname,$pass,$email) {
+		$fname = $this->db->real_escape_string($fname);
+		$lname = $this->db->real_escape_string($lname);
+		$uname = $this->db->real_escape_string($uname);
+		$pass = $this->db->real_escape_string($pass);
+		$email = $this->db->real_escape_string($email);
+		$query = "INSERT INTO user(fname,lname,uname,password,email) VALUES (\"${fname}\",\"${lname}\",\"${uname}\",\"${pass}\",\"${email}\");";
+		$this->db->query($query);
+	}
 }
 
 ?>

@@ -45,10 +45,24 @@ class controller {
 				session_destroy();
 				header("Location: index.php?action=start");
 			}
-			elseif($action == "adminMain" || $action == "adminUserList") {
-				$this->view = new view($local,$_GLOBALS["include_path"]);
-				$this->view->initialize($this);
-				$this->view->output($action . ".php");
+			elseif($action == "adminMain" ||
+				   $action == "adminUserList" ||
+				   $action == "adminEditUser" ||
+				   $action == "adminNewUser") {
+				if(isset($_GET["password1"])) {
+					$fname = $_GET["fname"];
+					$lname = $_GET["lname"];
+					$uname = $_GET["uname"];
+					$email = $_GET["email"];
+					$pass = $_GET["password1"];
+					$this->model->createUser($fname,$lname,$uname,$pass,$email);
+					header("Location: index.php?action=adminUserList");
+				}
+				else {
+					$this->view = new view($local,$_GLOBALS["include_path"]);
+					$this->view->initialize($this);
+					$this->view->output($action . ".php");
+				}
 			}
 			elseif($action == "home") {
 				$this->view = new view($local,$_GLOBALS["include_path"]);

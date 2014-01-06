@@ -9,7 +9,8 @@ foreach($users as $k=>$v) {
 	$last = $v["lname"];
 	$user = $v["uname"];
 	$email = $v["email"];
-	echo("<tr><td>${id}</td><td>${first}</td><td>${last}</td><td>${user}</td><td>${email}</td></tr>");
+	echo("<tr><td>${id}</td><td>${first}</td><td>${last}</td><td>${user}</td><td>${email}</td><td><a href=\"index.php?action=adminEditUser&user_id=${id}\">Edit</a></td></tr>");
 }
 ?>
 </table>
+<p><a href="index.php?action=adminNewUser">New User</a></p>
