@@ -79,6 +79,19 @@ class controller {
 				$this->view->initialize($this);
 				$this->view->output($action . ".php");	
 			}
+			elseif($action == "pantryShare") {
+				$pid = isset($_GET["share_id"]) ? $_GET["share_id"] : false;
+				if($pid) {
+					$_SESSION["share_id"] = $pid;
+					$this->view = new view($local,$_GLOBALS["include_path"]);
+					$this->view->initialize($this);
+					$this->view->output($action . ".php");
+					unset($_SESSION["share_id"]);
+				}
+				else {
+					header("Location: index.php?action=pantryMain");
+				}
+			}
 			elseif($action == "pantryDelete") {
 				$pid = isset($_GET["pantry_id"]) ? $_GET["pantry_id"] : false;
 				if($pid) {
@@ -89,7 +102,7 @@ class controller {
 			elseif($action == "pantryDetail") {
 				$pid = isset($_GET["pantry_id"]) ? $_GET["pantry_id"] : false;
 				if($pid) {
-					this->view = new view($local,$_GLOBALS["include_path]"]);
+					$this->view = new view($local,$_GLOBALS["include_path]"]);
 					$this->view->initialize($this);
 					$this->view->output($action . ".php");
 				}
