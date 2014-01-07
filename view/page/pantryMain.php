@@ -13,7 +13,7 @@ foreach($pantries as $k=>$v) {
 	$name = $v["name"];
 	$notes = $v["notes"];
 	$id = $v["pantry_id"];
-	echo("<tr><td>${name}</td><td>${notes}</td><td><a href=\"index.php?action=pantryEdit&pantry_id=${id}\">Edit</a></td><td><a href=\"index.php?action=pantryDelete&pantry_id=${id}\">Delete</a></td></tr>");
+	echo("<tr><td>${name}</td><td>${notes}</td><td><a href=\"index.php?action=pantryEdit&pantry_id=${id}\">Edit</a></td><td><a href=\"index.php?action=pantryDelete&pantry_id=${id}\">Delete</a></td><td><a href=\"index.php?action=pantryShare&share_id=${id}\">Share</a></td></tr>");
 }
 ?>
 </tbody>

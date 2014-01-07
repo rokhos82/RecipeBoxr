@@ -19,7 +19,7 @@ class rbrModel extends model {
 	}
 
 	public function getUserList() {
-		$query = "SELECT * FROM user ORDER BY user_id;";
+		$query = "SELECT * FROM `user` ORDER BY `user_id`;";
 		$result = $this->db->query($query);
 		$users = array();
 		if($result) {
