@@ -1,5 +1,5 @@
 <p>Share pantry for <?php echo $_SESSION["share_id"]; ?></p>
-<form>
+<form action="index.php" method="get" id="pantryShareForm">
 <select name="user_id">
 <?php
 $users = $this->model->getUserList();
@@ -9,5 +9,7 @@ foreach($users as $k=>$v) {
 	echo("<option value=\"${uid}\">${username}</option>");
 }
 ?>
-</select>
+</select><br/>
+<input type="button" name="submit" value="Share" onclick="rbr.formSubmit('pantryShareForm');" />
+<input type="hidden" name="action" value="pantryShare" />
 </form>

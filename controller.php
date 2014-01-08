@@ -110,6 +110,7 @@ class controller {
 					header("Location: index.php?action=pantryMain");
 				}
 			}
+			}
 			else {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);
