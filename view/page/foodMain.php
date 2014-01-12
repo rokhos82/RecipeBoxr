@@ -1,6 +1,3 @@
-<?php
-?>
-<p>Food page</p>
 <fieldset>
 	<legend>Food List</legend>
 	<table>
@@ -21,13 +18,13 @@
 		</tbody>
 	</table>
 </fieldset>
-<fieldset>
-	<legend>Create Food</legend>
-	<form action="index.php" method="get">
+<form action="index.php" method="get">
+	<fieldset>
+		<legend>Create Food</legend>
 		<label>Name:</label><input type="text" name="name" /><br />
 		<label>Category:</label><input type="text" name="category" /><br />
 		<label>Notes:</label><input type="text" name="notes" /><br />
 		<input type="hidden" name="action" value="foodCreate" />
 		<input type="submit" value="Create" />
-	</form>
-</fieldset>
+	</fieldset>
+</form>
