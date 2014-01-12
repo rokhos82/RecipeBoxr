@@ -10,6 +10,7 @@ foreach($users as $k=>$v) {
 }
 ?>
 </select><br/>
-<input type="button" name="submit" value="Share" onclick="rbr.formSubmit('pantryShareForm');" />
 <input type="hidden" name="action" value="pantryShare" />
+<input type="hidden" name="pantry_id" value="<?php echo($_SESSION["share_id"]); ?>" />
+<input type="submit" value="Share" />
 </form>

@@ -1,5 +1,5 @@
 <?php
-$details = $this->model->getUserDetails($_SESSION["userid"]);
+$details = $this->model->getUserDetails($_GET["user_id"]);
 ?>
 <p>User Edit Page</p>
 <form action="index.php" method="get">

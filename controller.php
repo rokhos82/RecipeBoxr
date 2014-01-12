@@ -88,6 +88,12 @@ class controller {
 					$this->view->output($action . ".php");
 					unset($_SESSION["share_id"]);
 				}
+				elseif(isset($_GET["user_id"])) {
+					$uid = $_GET["user_id"];
+					$pid = $_GET["pantry_id"];
+					$this->model->sharePantry($pid,$uid);
+					header("Location: index.php?action=pantryMain");
+				}
 				else {
 					header("Location: index.php?action=pantryMain");
 				}
@@ -100,16 +106,34 @@ class controller {
 				header("Location: index.php?action=pantryMain");
 			}
 			elseif($action == "pantryDetail") {
-				$pid = isset($_GET["pantry_id"]) ? $_GET["pantry_id"] : false;
+				$pid = isset($_GET["pid"]) ? $_GET["pid"] : false;
 				if($pid) {
-					$this->view = new view($local,$_GLOBALS["include_path]"]);
+					$_SESSION["pid"] = $pid;
+					$this->view = new view($local,$_GLOBALS["include_path"]);
 					$this->view->initialize($this);
 					$this->view->output($action . ".php");
+					unset($_SESSION["pid"]);
 				}
 				else {
 					header("Location: index.php?action=pantryMain");
 				}
 			}
+			elseif($action == "productMain") {
+				$this->view = new view($local,$_GLOBALS["include_path"]);
+				$this->view->initialize($this);
+				$this->view->output("${action}.php");
+			}
+			elseif($action == "foodMain") {
+				$this->view = new view($local,$_GLOBALS["include_path"]);
+				$this->view->initialize($this);
+				$this->view->output("${action}.php");	
+			}
+			elseif($action == "foodCreate") {
+				$name = $_GET["name"];
+				$category = $_GET["category"];
+				$notes = $_GET["notes"];
+				$this->model->createFood($name,$category,$notes);
+				header("Location: index.php?action=foodMain");
 			}
 			else {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
@@ -125,6 +149,9 @@ class controller {
 			$user = $_SESSION["username"];
 			$query = "SELECT * FROM menus WHERE user=${user}";
 			$items["Pantry"] = "index.php?action=pantryMain";
+			$items["Products"] = "index.php?action=productMain";
+			$items["Foods"] = "index.php?action=foodMain";
+			$items["Recipes"] = "index.php?action=recipeMain";
 			$items["Admin"] = "index.php?action=adminMain";
 			$items["Logout"] = "index.php?action=logout";
 		}
