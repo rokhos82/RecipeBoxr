@@ -102,6 +102,12 @@ class rbrModel extends model {
 		$query = "INSERT INTO food(name,category,notes) VALUES (\"${name}\",\"${cat}\",\"${notes}\");";
 		$this->db->query($query);
 	}
+
+	public function getProductList() {
+		$query = "SELECT `product`.`product_id` AS `pid`,`product`.`name` AS `pname`,`food`.`name` AS `fname`,`product`.`notes` AS `notes` FROM `product` LEFT JOIN `food` ON `food`.`food_id`=`product`.`food_id`;";
+		$results = $this->db->query($query);
+		return $results;
+	}
 }
 
 ?>
