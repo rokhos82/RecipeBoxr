@@ -18,6 +18,21 @@
 		</tbody>
 	</table>
 </fieldset>
-<fieldset>
-	<legend>Create Product</legend>
-</fieldset>
+<form action="index.php" method="get">
+	<fieldset>
+		<legend>Create Product</legend>
+		<label>Name:</label><input type="text" name="name" /><br />
+		<label>Food:</label><select name="food_id">
+		<?php
+		$foods = $this->model->getFoodList();
+		foreach($foods as $k=>$food) {
+			$name = $food["name"];
+			$id = $food["food_id"];
+			echo("<option value=\"${id}\">${name}</option>");
+		}
+		?></select><br />
+		<label>Notes:</label><input type="text" name="notes" /><br />
+		<input type="hidden" name="action" value="productCreate" />
+		<input type="submit" value="Create" />
+	</fieldset>
+</form>

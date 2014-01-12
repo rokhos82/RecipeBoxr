@@ -90,7 +90,7 @@ class rbrModel extends model {
 	}
 
 	public function getFoodList() {
-		$query = "SELECT * FROM food;";
+		$query = "SELECT * FROM `food` ORDER BY `food`.`name`;";
 		$results = $this->db->query($query);
 		return $results;
 	}
@@ -104,9 +104,17 @@ class rbrModel extends model {
 	}
 
 	public function getProductList() {
-		$query = "SELECT `product`.`product_id` AS `pid`,`product`.`name` AS `pname`,`food`.`name` AS `fname`,`product`.`notes` AS `notes` FROM `product` LEFT JOIN `food` ON `food`.`food_id`=`product`.`food_id`;";
+		$query = "SELECT `product`.`product_id` AS `pid`,`product`.`name` AS `pname`,`food`.`name` AS `fname`,`product`.`notes` AS `notes` FROM `product` LEFT JOIN `food` ON `food`.`food_id`=`product`.`food_id` ORDER BY `pname`;";
 		$results = $this->db->query($query);
 		return $results;
+	}
+
+	public function createProduct($name,$fid,$notes) {
+		$name = $this->db->real_escape_string($name);
+		$fid = $this->db->real_escape_string($fid);
+		$notes = $this->db->real_escape_string($notes);
+		$query = "INSERT INTO product(name,food_id,notes) VALUES (\"${name}\",${fid},\"${notes}\");";
+		$this->db->query($query);
 	}
 }
 
