@@ -14,8 +14,20 @@ $name = $details["name"];
 <tbody></tbody>
 </table>
 </fieldset>
-<form>
+<form action="index.php" method="get">
 <fieldset>
 <legend>Add Product</legend>
+<label>Product:</label><select name="product_id">
+<?php
+$products = $this->model->getProductList();
+foreach($products as $k=>$product) {
+	$name = $product["pname"];
+	$id = $product["pid"];
+	echo("<option value=\"${id}\">${name}<option>");
+}
+?>
+</select><br />
+<label>Quantity</label><input type="text" name="quantity" /><br />
+<label>Threshold</label><input type="text" name="threshod" /><br />
 </fieldset>
 </form>

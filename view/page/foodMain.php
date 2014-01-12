@@ -12,7 +12,7 @@
 				$name = $food["name"];
 				$category = $food["category"];
 				$notes = $food["notes"];
-				echo("<tr><td>${name}</td><td>${name}</td><td>${category}</td><td>${notes}</td></tr>");
+				echo("<tr><td>${name}</td></td><td>${category}</td><td>${notes}</td></tr>");
 			}
 			?>
 		</tbody>

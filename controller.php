@@ -123,6 +123,13 @@ class controller {
 				$this->view->initialize($this);
 				$this->view->output("${action}.php");
 			}
+			elseif($action == "productCreate") {
+				$name = $_GET["name"];
+				$fid = $_GET["food_id"];
+				$notes = $_GET["notes"];
+				$this->model->createProduct($name,$fid,$notes);
+				header("Location: index.php?action=productMain");
+			}
 			elseif($action == "foodMain") {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);
