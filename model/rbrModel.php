@@ -64,7 +64,7 @@ class rbrModel extends model {
 
 	public function getPantryList($uid) {
 		$uid = $this->db->real_escape_string($uid);
-		$query = "SELECT `pantry`.`pantry_id` AS `pantry_id`,`pantry`.`name` AS `name`,`pantry`.`notes` AS `notes` FROM `pantry` LEFT JOIN `user_pantry_cross` ON `pantry`.`pantry_id`=`user_pantry_cross`.`pantry_id` WHERE `user_pantry_cross`.`user_id`=${uid};";
+		$query = "SELECT `pantry`.`pantry_id` AS `pantry_id`,`pantry`.`name` AS `name`,`pantry`.`notes` AS `notes`,`user_pantry_cross`.`owner` AS `owner` FROM `pantry` LEFT JOIN `user_pantry_cross` ON `pantry`.`pantry_id`=`user_pantry_cross`.`pantry_id` WHERE `user_pantry_cross`.`user_id`=${uid};";
 		$results = $this->db->query($query);
 		return $results;
 	}
@@ -72,6 +72,34 @@ class rbrModel extends model {
 	public function deletePantry($pid) {
 		$pid = $this->db->real_escape_string($pid);
 		$query = "DELETE FROM `pantry` WHERE `pantry_id`=${pid};";
+		$this->db->query($query);
+	}
+
+	public function sharePantry($pid,$uid) {
+		$pid = $this->db->real_escape_string($pid);
+		$uid = $this->db->real_escape_string($uid);
+		$query = "INSERT INTO user_pantry_cross (user_id,pantry_id,owner) VALUES (${uid},${pid},false);";
+		$this->db->query($query);
+	}
+
+	public function getPantryDetail($pid) {
+		$pid = $this->db->real_escape_string($pid);
+		$query = "SELECT `pantry`.`name` AS `name` FROM pantry WHERE pantry_id=${pid} LIMIT 1;";
+		$results = $this->db->query($query);
+		return $results->fetch_assoc();
+	}
+
+	public function getFoodList() {
+		$query = "SELECT * FROM food;";
+		$results = $this->db->query($query);
+		return $results;
+	}
+
+	public function createFood($name,$cat,$notes) {
+		$name = $this->db->real_escape_string($name);
+		$cat = $this->db->real_escape_string($cat);
+		$notes = $this->db->real_escape_string($notes);
+		$query = "INSERT INTO food(name,category,notes) VALUES (\"${name}\",\"${cat}\",\"${notes}\");";
 		$this->db->query($query);
 	}
 }
