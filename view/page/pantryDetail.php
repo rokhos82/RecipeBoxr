@@ -23,11 +23,12 @@ $products = $this->model->getProductList();
 foreach($products as $k=>$product) {
 	$name = $product["pname"];
 	$id = $product["pid"];
-	echo("<option value=\"${id}\">${name}<option>");
+	echo("<option value=\"${id}\">${name}</option>");
 }
 ?>
 </select><br />
 <label>Quantity</label><input type="text" name="quantity" /><br />
 <label>Threshold</label><input type="text" name="threshod" /><br />
+<input type="submit" value="Add Item" />
 </fieldset>
 </form>
