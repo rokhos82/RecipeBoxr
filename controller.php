@@ -118,6 +118,14 @@ class controller {
 					header("Location: index.php?action=pantryMain");
 				}
 			}
+			elseif($action == "pantryAddItem") {
+				$pantry_id = $_GET["pantry_id"];
+				$product_id = $_GET["product_id"];
+				$quantity = $_GET["quantity"];
+				$threshold = $_GET["threshold"];
+				$this->model->addItemToPantry($patnry_id,$product_id,$quantity,$threshold);
+				header("Location: index.php?action=pantryDetail");
+			}
 			elseif($action == "productMain") {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);
