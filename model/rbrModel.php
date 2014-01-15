@@ -116,6 +116,22 @@ class rbrModel extends model {
 		$query = "INSERT INTO product(name,food_id,notes) VALUES (\"${name}\",${fid},\"${notes}\");";
 		$this->db->query($query);
 	}
+
+	public function addItemToPantry($pantry_id,$product_id,$quantity,$threshold) {
+		$pantry_id = $this->db->real_escape_string($pantry_id);
+		$product_id = $this->db->real_escape_string($product_id);
+		$quantity = $this->db->real_escape_string($quantity);
+		$threshold = $this->db->real_escape_string($threshold);
+		$query = "INSERT INTO `pantry_item` (`pantry_id`,`product_id`,`quantity`,`threshold`) VALUES (\"${pantry_id}\",\"${product_id}\",\"${quantity}\",\"${threshold}\");";
+		$this->db->query($query);
+	}
+
+	public function getPantryItems($pid) {
+		$pid = $this->db->real_escape_string($pid);
+		$query = "SELECT * FROM `pantry_item` WHERE `pantry_id`=${pid};";
+		$results = $this->db->query($query);
+		return $results;
+	}
 }
 
 ?>

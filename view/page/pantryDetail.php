@@ -11,7 +11,17 @@ $name = $details["name"];
 	<tr><td>Product</td><td>Quantity</td><td>Threshold</td></tr>
 </thead>
 <tfoot></tfoot>
-<tbody></tbody>
+<tbody>
+	<?php
+	$items = $this->model->getPantryItems($pid);
+	foreach($items as $k=>$item) {
+		$name = $item["product_id"];
+		$quantity = $item["quantity"];
+		$threshod = $item["threshod"];
+		echo("<tr><td>${name}</td><td>${name}</td><td>${name}</td></tr>");
+	}
+	?>
+</tbody>
 </table>
 </fieldset>
 <form action="index.php" method="get">
@@ -29,6 +39,8 @@ foreach($products as $k=>$product) {
 </select><br />
 <label>Quantity</label><input type="text" name="quantity" /><br />
 <label>Threshold</label><input type="text" name="threshod" /><br />
+<input type="hidden" name="action" value="pantryAddItem" />
+<input type="hidden" name="pantry_id" value="<?php echo $pid; ?>" />
 <input type="submit" value="Add Item" />
 </fieldset>
 </form>
