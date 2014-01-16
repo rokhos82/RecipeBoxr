@@ -128,7 +128,7 @@ class rbrModel extends model {
 
 	public function getPantryItems($pid) {
 		$pid = $this->db->real_escape_string($pid);
-		$query = "SELECT `product`.`name` AS `name`,`pantry_item`.`quantity` AS `quantity`,`pantry_item`.`threshold` AS `threshold` FROM `pantry_item` JOIN `product` ON `pantry_item`.`product_id`=`product`.`product_id` WHERE `pantry_id`=${pid};";
+		$query = "SELECT `product`.`product_id` AS `product_id`,`product`.`name` AS `name`,`pantry_item`.`quantity` AS `quantity`,`pantry_item`.`threshold` AS `threshold` FROM `pantry_item` JOIN `product` ON `pantry_item`.`product_id`=`product`.`product_id` WHERE `pantry_id`=${pid};";
 		$results = $this->db->query($query);
 		return $results;
 	}
