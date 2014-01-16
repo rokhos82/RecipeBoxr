@@ -15,10 +15,11 @@ $name = $details["name"];
 	<?php
 	$items = $this->model->getPantryItems($pid);
 	foreach($items as $k=>$item) {
+		$product_id = $item["product_id"];
 		$name = $item["name"];
 		$quantity = $item["quantity"];
 		$threshold = $item["threshold"];
-		echo("<tr><td>${name}</td><td>${quantity}</td><td>${threshold}</td></tr>");
+		echo("<tr><td>${name}</td><td>${quantity}</td><td>${threshold}</td><td><a href=\"index.php?action=pantryItemEdit&pantry_id=${pid}&product_id=${product_id}\">Edit</a></td><td><a href=\"index.php?action=pantryItemDelete&pantry_id=${pid}&product_id=${product_id}\">Delete</a></td><td><a href=\"index.php?action=pantryItemRestock&pantry_id=${pid}&product_id=${product_id}\">Restock</a></td></tr>");
 	}
 	?>
 </tbody>
