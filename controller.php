@@ -123,8 +123,8 @@ class controller {
 				$product_id = $_GET["product_id"];
 				$quantity = $_GET["quantity"];
 				$threshold = $_GET["threshold"];
-				$this->model->addItemToPantry($patnry_id,$product_id,$quantity,$threshold);
-				header("Location: index.php?action=pantryDetail");
+				$this->model->addItemToPantry($pantry_id,$product_id,$quantity,$threshold);
+				header("Location: index.php?action=pantryDetail&pid=${pantry_id}");
 			}
 			elseif($action == "productMain") {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
