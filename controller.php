@@ -150,6 +150,11 @@ class controller {
 				$this->model->createFood($name,$category,$notes);
 				header("Location: index.php?action=foodMain");
 			}
+			elseif($action == "recipeMain") {
+				$this->view = new view($local,$_GLOBALS["include_path"]);
+				$this->view->initialize($this);
+				$this->view->output("${action}.php");
+			}
 			else {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);
