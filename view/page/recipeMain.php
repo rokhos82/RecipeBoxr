@@ -1,13 +1,23 @@
 <fieldset>
-	<legend>Recipe Search</legend>
+	<legend>Tools</legend>
+	<a href="recipeCreate">Create Recipe</a>
 	<form>
 		<label>Search:</label><input type="text"/><input type="button" value="Go" />
 	</form>
 </fieldset>
 <fieldset>
+	<legend>Favorite Recipes</legend>
+</fieldset>
+<fieldset>
 	<legend>Recipes List</legend>
 	<ul>
-		<li><a href="recipeDetail?id=1">Kai Si Ming</a></li>
-		<li><a href="recipeDetail?id=2">Kielbasa and Brussel Sprouts</a></li>
+		<?php
+		$recipes = $this->model->getRecipeList();
+		foreach($recipes as $key => $recipe) {
+			$name = $recipe["name"];
+			$id = $recipe["id"];
+			echo("<li><a href=\"recipeDetail?id=${id}\">${name}</a></li>");
+		}
+		?>
 	</ul>
 </fieldset>

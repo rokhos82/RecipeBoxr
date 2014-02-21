@@ -137,6 +137,15 @@ class rbrModel extends model {
 		$pantry_id = $this->db->real_escape_string($pantry_id);
 		$product_id = $this->db->real_escape_string($product_id);
 	}
+
+	public function getRecipeList() {
+		$query = "SELECT * FROM recipe;";
+		$results = $this->db->query($query);
+		return $results;
+	}
+
+	public function getRecipeFavorites($uid) {
+	}
 }
 
 ?>
