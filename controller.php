@@ -126,6 +126,11 @@ class controller {
 				$this->model->addItemToPantry($pantry_id,$product_id,$quantity,$threshold);
 				header("Location: index.php?action=pantryDetail&pid=${pantry_id}");
 			}
+			elseif($action == "pantryEdit") {
+				$this->view = new view($local,$_GLOBALS["include_path"]);
+				$this->view->initialize($this);
+				$this->view->output($action . ".php");
+			}
 			elseif($action == "productMain") {
 				$this->view = new view($local,$_GLOBALS["include_path"]);
 				$this->view->initialize($this);

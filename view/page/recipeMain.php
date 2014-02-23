@@ -7,6 +7,8 @@
 </fieldset>
 <fieldset>
 	<legend>Favorite Recipes</legend>
+	<ul>
+	</ul>
 </fieldset>
 <fieldset>
 	<legend>Recipes List</legend>
