@@ -151,6 +151,8 @@ class rbrModel extends model {
 		$pantry = $this->db->real_escape_string($pantry);
 		$product = $this->db->real_escape_string($product);
 		$query = "SELECT `product`.`name` AS `name`,`pantry_item`.`threshold` AS `threshold`,`pantry_item`.`quantity` AS `quantity` FROM `pantry_item` LEFT JOIN `product` ON `pantry_item`.`product_id`=`product`.`product_id` WHERE `pantry_item`.`pantry_id`={pantry} AND `product`.`product_id`={product};";
+		$results = $this->db->query($query);
+		return $results[0];
 	}
 }
 
