@@ -129,7 +129,7 @@ class controller {
 			elseif($action == "pantryItemEdit") {
 				$pid = isset($_GET["pantry_id"]) ? $_GET["pantry_id"] : false;
 				if($pid) {
-					$_SESSION["pid"] = $pid;
+					$_SESSION["pantry"] = $pid;
 					$_SESSION["product"] = $_GET["product_id"];
 					$this->view = new view($local,$_GLOBALS["include_path"]);
 					$this->view->initialize($this);

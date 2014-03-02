@@ -136,6 +136,9 @@ class rbrModel extends model {
 	public function getPantryItemDetail($pantry_id,$product_id) {
 		$pantry_id = $this->db->real_escape_string($pantry_id);
 		$product_id = $this->db->real_escape_string($product_id);
+		$query = "SELECT `product`.`name` AS `name`,`pantry_item`.`threshold` AS `threshold`,`pantry_item`.`quantity` AS `quantity` FROM `pantry_item` LEFT JOIN `product` ON `pantry_item`.`product_id`=`product`.`product_id` WHERE `pantry_item`.`pantry_id`={pantry_id} AND `product`.`product_id`={product_id};";
+		$results = $this->db->query($query);
+		return $results[0];
 	}
 
 	public function getRecipeList() {
@@ -145,14 +148,6 @@ class rbrModel extends model {
 	}
 
 	public function getRecipeFavorites($uid) {
-	}
-
-	public function getPantryItemDetail($pantry,$prodcut) {
-		$pantry = $this->db->real_escape_string($pantry);
-		$product = $this->db->real_escape_string($product);
-		$query = "SELECT `product`.`name` AS `name`,`pantry_item`.`threshold` AS `threshold`,`pantry_item`.`quantity` AS `quantity` FROM `pantry_item` LEFT JOIN `product` ON `pantry_item`.`product_id`=`product`.`product_id` WHERE `pantry_item`.`pantry_id`={pantry} AND `product`.`product_id`={product};";
-		$results = $this->db->query($query);
-		return $results[0];
 	}
 }
 
