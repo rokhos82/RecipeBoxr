@@ -26,8 +26,8 @@ foreach($pantries as $k=>$v) {
 <form action="index.php" method="get" id="newPantryForm">
 <fieldset>
 <legend>New Pantry</legend>
-<label></label><input type="text" name="name" /><br />
-<input type="text" name="notes" /><br />
+<label>Name:</label><input type="text" name="name" /><br />
+<label>Notes:</label><input type="text" name="notes" /><br />
 <input type="hidden" name="action" value="pantryCreate" /><br />
 <input type="button" value="Create" onclick="rbr.formSubmit('newPantryForm');" /><br />
 </fieldset>
