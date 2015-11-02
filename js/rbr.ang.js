@@ -2,34 +2,38 @@ var recipeboxr = {};
 
 recipeboxr.appStates = {
 	main: "main",
-    cupboards: "cupboards",
-    fridge: "fridge",
+    pantry: "pantry",
+    products: "products",
     freezer: "freezer",
-    pantry: "pantry"
 };
 
 recipeboxr.data = {
-    cupboards: {
-        food: [
+    pantry: {
+        cupboard: [
             {name: "Rotel",quantity: 10},
             {name: "Siracha",quantity: 1},
             {name: "Green Beans",quantity: 20}
         ]
     },
-    fridge: {},
+    products: {},
     freezer: {},
     pantry: {}
 };
 
 recipeboxr.app = new angular.module("recipeboxr",[]);
-recipeboxr.ctl = new recipeboxr.app.controller("rbrCtl",["$scope",function($scope){
+
+recipeboxr.controllers = {};
+recipeboxr.controllers.main = new recipeboxr.app.controller("rbrCtl",["$scope",function($scope){
 	$scope.greeting = "Hello and welcome to RecipeBoxR!";
     
     $scope.rbr = recipeboxr;
     $scope.state = recipeboxr.appStates.main;
-    
-    $scope.cupboardStateChange = function() {
-        $scope.state = $scope.rbr.appStates.cupboards;
-        $scope.food = $scope.rbr.data.cupboards.food;
-    };
 }]);
+
+recipeboxr.directives = {};
+recipeboxr.directives.pantryManager = recipeboxr.app.directive("pantryManager",function(){
+	return {
+		restrict: 'E',
+		templateUrl: 'templates/pantry-manager.html'
+	};
+});
